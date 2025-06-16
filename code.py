@@ -23,12 +23,12 @@ def extract_text_from_pptx(pptx_path):
     return text
 
 
-# def extract_text_from_pdf(pdf_path):
-#     doc = fitz.open(pdf_path)
-#     text = ""
-#     for page in doc:
-#         text += page.get_text()
-#     return text
+def extract_text_from_pdf(pdf_path):
+    doc = fitz.open(pdf_path)
+    text = ""
+    for page in doc:
+        text += page.get_text()
+    return text
 
 def extract_text_from_excel(xls_path):
     text = ""
@@ -74,5 +74,3 @@ while True:
     answer = ask_question(question)
     print("Answer:", answer)
     print("\n" + "-"*50 + "\n")
-
-# the end
