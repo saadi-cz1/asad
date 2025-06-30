@@ -1,9 +1,4 @@
 def calculate_sum_and_average():
-    """
-    Prompts the user to input two numbers,
-    calculates their sum and average,
-    and prints the results.
-    """
     # Ask the user to enter the first number
     num1 = float(input("Enter the first number: "))
 
