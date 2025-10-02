@@ -1,12 +1,12 @@
 
 !pip install watchdog
-
 #cloning the folder
 !git clone https://github.com/saadi-cz1/asad.git
 
 import os
 import time
 import subprocess
+import textwrap
 
 #to observe the folder for any changes
 from watchdog.observers import Observer
@@ -29,12 +29,15 @@ def generate_documentation_with_gemini(file_path):
     if not file_path.lower().endswith(".py"): #To pick only the python files
         return
     try:
+
         with open(file_path, "r", encoding="utf-8") as f:
             code = f.read()
 
     except Exception as e:
         print(f"❌ Failed to read file: {e}")
         return
+
+
 
   #extracting the file name and requesting the query to gemini
 
@@ -70,10 +73,25 @@ def generate_documentation_with_gemini(file_path):
     os.makedirs(doc_path, exist_ok=True)
     full_doc_path = os.path.join(doc_path, doc_filename)
 
+    # try:
+    #     with open(full_doc_path, "w", encoding="utf-8") as f:
+    #         f.write(f"# Gemini Documentation for `{filename}`\n\n")
+    #         f.write(doc_content)
+    #     print(f"✅ Documentation saved to: {full_doc_path}")
+    # except Exception as e:
+    #     print(f"❌ Failed to write documentation file: {e}")
+
+
     try:
+        # wrap long lines at 150 characters
+        wrapped_doc = "\n".join(
+            textwrap.fill(line, width=150) if not line.strip().startswith("```") else line
+            for line in doc_content.splitlines()
+        )
+
         with open(full_doc_path, "w", encoding="utf-8") as f:
             f.write(f"# Gemini Documentation for `{filename}`\n\n")
-            f.write(doc_content)
+            f.write(wrapped_doc)
         print(f"✅ Documentation saved to: {full_doc_path}")
     except Exception as e:
         print(f"❌ Failed to write documentation file: {e}")
@@ -117,11 +135,8 @@ if __name__ == "__main__":
     try:
         while True:
             git_pull()
-            time.sleep(30)
+            time.sleep(60)
     except KeyboardInterrupt:
         observer.stop()
 
     observer.join()
-
-
-
