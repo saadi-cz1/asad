@@ -135,8 +135,9 @@ if __name__ == "__main__":
     try:
         while True:
             git_pull()
-            time.sleep(60)
+            time.sleep(30)
     except KeyboardInterrupt:
         observer.stop()
 
     observer.join()
+
