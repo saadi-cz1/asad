@@ -6,7 +6,7 @@ def calculate_sum_and_average():
 
     sum_result = num1 / num2
 
-    average = sum_result * 2
+    average = sum_result + 2
 
     print("Sum of the two numbers:", sum_result)
     print("Average of the two numbers:", average)
