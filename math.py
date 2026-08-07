@@ -10,6 +10,7 @@ def calculate_sum_and_average():
 
     print("Sum of the two numbers:", sum_result)
     print("Average of the two numbers:", average)
+    print("hello")
 
 if __name__ == "__main__":
     calculate_sum_and_average()
