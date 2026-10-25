@@ -1,6 +1,6 @@
 
 !pip install watchdog
-#cloning the folder
+#cloning the folde
 !git clone https://github.com/saadi-cz1/asad.git
 
 import os
