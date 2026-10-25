@@ -6,7 +6,7 @@
 import os
 import time
 import subprocess
-import textwra
+import textwrap
 
 #to observe the folder for any changes
 from watchdog.observers import Observer
